@@ -1,4 +1,4 @@
-# Markethac Monthly Product Sales Report
+# Markethac Monthly Product Sales Report (Penjelasan dari masing-masing kode)
 
 1. WITH report_monthly_orders_product_agg AS: Membuat CTE (Common Table Expression) atau semacam temporary table bernama 'report_monthly_orders_product_agg/ untuk menyimpan hasil agregasi sebelum digunakan di query utama.
 2. SELECT FORMAT_TIMESTAMP('%Y-%m', o.created_at) AS month: Mengubah 'created_at' dari tabel orders menjadi format 'YYYY-MM' agar bisa dikelompokkan per bulan.
@@ -14,7 +14,7 @@
     - 'month': Bulan Pesanan
     - 'p.id': ID Produk
     - 'p.name': Nama Produk
-12. 
-
- 
-
+12. SELECT * FROM report_monthly_orders_product_agg: Mengambil semua kolom data dari temporary tabel 'report_monthly_orders_product_agg', yang berisi hasil GROUP BY dari tabel 'orders', 'order_items', dan 'products'.
+13. ORDER BY month, total_sales DESC: Mengurutkan hasil berdasarkan:
+    - 'month' secara naik (default ascending), agar laporan tersusun per bulan.
+    - 'total_sales DESC' yaitu produk dengan total penjualan tertinggi di urutan atas setiap bulannya.
